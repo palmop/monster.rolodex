@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { CardList } from './components/card-list/card-list.component';
-import { SearchBox } from './components/search-box/search-box.component';
+import { CardList } from './components/card-list/card-list.component'
 
 import './App.css';
-
 
 //function App() {
 // invece di una function, estendiamo la classe Component
@@ -27,12 +25,6 @@ class App extends Component {
       .then(users => this.setState({ monsters: users }))
   }
 
-  // il bind allo state lo fa la dichiarazione della arrow funtion 
-  // se tu dichiarassi senza arrow-function il this sarebbe undefined nel componente.
-  handleChange = e => {
-    this.setState({searchField: e.target.value},);
-  }
-
   render () {
         // vogliamo una costante per lo state al momento del render.
         // questa notazione di const è equivalente a
@@ -46,8 +38,21 @@ class App extends Component {
           )
         );
         return (<div className="App">
-          <h1> Monster Rolodex</h1>
-          <SearchBox placeholder='search monster' handlerChange={this.handleChange} />
+          <input 
+            type='search' 
+            placeholder='search monster' 
+            onChange={
+            // e sta per evento
+            e => {
+                this.setState(
+                  {searchField: e.target.value},
+                  // se metti qui come function nel secondo argomento di setState è sincrono ** guarda wiki è importante
+                  // () => console.log(this.state)
+                  );
+                // se metti il console.log qui e non come secondo
+                // argomento di setState è asincrono e rimani indetro con i caratteri
+                // console.log(this.state)
+              }} />
           <CardList monsters={filteredMonsters} />
         </div>)
     }

@@ -66,3 +66,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## my
+nella stessa dir dove hai sviluppato, dopo aver creato il repo su github, fai
+`git remote add origin git@github-as-palmop:palmop/monster.rolodex.git`
+dove monster.rolodex.git è la repo creata su github
+poi install la lib gh-pages 
+`yarn add gh-pages`
+
